@@ -1,5 +1,4 @@
-<script>
-  var start = function() {
+var start = function() {
     screen.orientation.lock('portrait').then(
       function() {
         alert('To start, rotate your screen to landscape.');
@@ -14,5 +13,4 @@
         screen.orientation.addEventListener('change', orientationChangeHandler);
       })
   }
-  window.onload = start;
-</script>
+window.onload = start;
