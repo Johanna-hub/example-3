@@ -1,16 +1,10 @@
-var start = function() {
-    screen.orientation.lock('portrait').then(
-      function() {
-        alert('To start, rotate your screen to landscape.');
-
-        var orientationChangeHandler = function() {
-          if (!screen.orientation.type.startsWith('portrait')) {
-            return;
-          }
-          screen.orientation.removeEventListener('change', orientationChangeHandler);
-        }
-
-        screen.orientation.addEventListener('change', orientationChangeHandler);
-      })
+async function start() {
+    try {
+      await screen.orientation.lock('landscape')
+    } catch {
+      alert('To start, rotate your screen')
+    }
   }
-window.onload = start;
+
+  window.onload = start;
+>>>>>>> try/catch
