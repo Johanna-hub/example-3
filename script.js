@@ -51,3 +51,11 @@ async function start() {
   alert("To start, please rotate your screen to landscape");
   window.screen.orientation.addEventListener("change", orientationChangeHandler);
 }
+
+function thanks(){
+    alert("Thanks");
+}
+
+function rotate() {
+    screen.orientation.addEventListener("change", thanks)
+}
