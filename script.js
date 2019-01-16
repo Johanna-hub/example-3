@@ -42,12 +42,12 @@ function orientationChangeHandler() {
   if (window.matchMedia("(orientation: portrait)").matches) {
     return;
   }
-  screen.orientation.removeEventListener("change", orientationChangeHandler);
+  window.screen.orientation.removeEventListener("change", orientationChangeHandler);
   manualRotation();
 }
 
 async function start() {
   await goFullScreen();
   alert("To start, please rotate your screen to landscape");
-  screen.orientation.addEventListener("change", orientationChangeHandler);
+  window.screen.orientation.addEventListener("change", orientationChangeHandler);
 }
