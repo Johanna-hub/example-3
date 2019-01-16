@@ -1,26 +1,53 @@
+// function manualRotation() {
+//   alert("Thank you for rotating!");
+// }
+
+// async function goFullScreen() {
+//     if(document.fullscreenElement === null) {
+//         await document.documentElement.requestFullscreen();
+//     }
+// }
+
+// function orientationChangeHandler() {
+//   if (window.matchMedia("(orientation: portrait)").matches) {
+//     return;
+//   }
+//   screen.orientation.removeEventListener("change", orientationChangeHandler);
+//   manualRotation();
+// }
+
+// async function start() {
+
+//   if (document.fullscreenElement) {
+//     try {
+//       await screen.orientation.lock("landscape");
+//     } catch {
+//       alert("To start, please rotate your screen to landscape");
+//       screen.orientation.addEventListener("change", orientationChangeHandler);
+//     }
+//   }
+// }
+
 function manualRotation() {
-    alert("Thank you for rotating!");
+  alert("Thank you for rotating!");
+}
+
+async function goFullScreen() {
+  if (document.fullscreenElement === null) {
+    await document.documentElement.requestFullscreen();
+  }
+}
+
+function orientationChangeHandler() {
+  if (window.matchMedia("(orientation: portrait)").matches) {
+    return;
+  }
+  screen.orientation.removeEventListener("change", orientationChangeHandler);
+  manualRotation();
 }
 
 async function start() {
-    const promiseToFullScreen = new Promise(resolve =>
-        document.addEventListener("fullscreenchange", resolve)
-      );
-    await document.documentElement.requestFullscreen();
-    await promiseToFullScreen;
-    try {
-        await screen.orientation.lock('landscape');
-    } 
-    catch {
-        alert("To start, rotate your screen to landscape");
-        function orientationChangeHandler() {
-            if (!screen.orientation.type.startsWith('landscape')) {
-            return;
-            }
-        screen.orientation.removeEventListener('change', orientationChangeHandler);
-        manualRotation();
-        }
-      screen.orientation.addEventListener('change', orientationChangeHandler);
-    }
+  await goFullScreen();
+  alert("To start, please rotate your screen to landscape");
+  screen.orientation.addEventListener("change", orientationChangeHandler);
 }
-// window.onload = start;
