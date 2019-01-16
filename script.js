@@ -57,5 +57,5 @@ function thanks(){
 }
 
 function rotate() {
-    screen.orientation.addEventListener("change", thanks)
+    window.addEventListener("orientationchange", thanks)
 }
