@@ -3,7 +3,7 @@ function manualRotation() {
 }
 
 function orientationChangeHandler() {
-  if (window.matchMedia("(orientation: portrait)").matches) {
+  if (window.matchMedia("(orientation: landscape)").matches) {
     return;
   }
   window.removeEventListener("orientationchange", orientationChangeHandler);
