@@ -3,19 +3,22 @@ function manualRotation() {
 }
 
 function orientationChangeListener() {
-  const inPortrait = window.matchMedia('(orientation: portrait)')
-  function detectOrientation(e){
-      if (e.matches) {
-          return
-      }
-      else {
-        window.removeEventListener("orientationchange", orientationChangeListener);
-        manualRotation();
-      }
+  const inPortrait = window.matchMedia("(orientation: portrait)");
+  function detectOrientation(e) {
+    if (e.matches) {
+      return;
+    } else {
+      window.removeEventListener(
+        "orientationchange",
+        orientationChangeListener
+      );
+      inPortrait.removeListener(detectOrientation);
+      manualRotation();
+    }
   }
   inPortrait.addListener(detectOrientation);
 }
-   
+
 async function start() {
   try {
     await screen.orientation.lock("landscape");
@@ -33,4 +36,3 @@ function thanks() {
 function rotate() {
   window.addEventListener("orientationchange", thanks);
 }
-
