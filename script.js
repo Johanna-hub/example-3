@@ -38,7 +38,7 @@ function rotate() {
 }
 
 function final() {
-  /* Start application when in correct orientation */
+  alert("thanks for turning");
 }
 async function start2() {
   try {
