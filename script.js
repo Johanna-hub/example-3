@@ -50,10 +50,10 @@ async function start2() {
   const matchLandscape = matchMedia("(orientation: landscape)");
   if (matchLandscape.matches) return final(); 
   addEventListener("orientationchange", function listener() {
-    matchPortrait.addListener(function mediaChange(e) {
+    matchLandscape.addListener(function mediaChange(e) {
       if (!e.matches) return; // Nope, not landscape!
       removeEventListener("orientationchange", listener);
-      matchPortrait.removeListener(mediaChange);
+      matchLandscape.removeListener(mediaChange);
       final();
     });
   });
